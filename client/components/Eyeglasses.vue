@@ -64,10 +64,12 @@ export default {
       π: 3.141592653589793238462643383279502884197169399375105820974944592307816406286,
       bridge: {
         width: {
-          max: 40,
-          value: 0
+          min: -19,
+          max: 19,
+          value: 12
         },
         height: {
+          min: -18,
           max: 18,
           value: 0
         }
@@ -81,12 +83,14 @@ export default {
       },
       lens: {
         width: {
+          min: 20,
           max: 64,
-          value: 32
+          value: 48
         },
         height: {
+          min: 20,
           max: 64,
-          value: 32
+          value: 48
         }
       }
     }
