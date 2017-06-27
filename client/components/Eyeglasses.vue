@@ -4,47 +4,50 @@
       <svg class="eyeglasses__lens" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
         <ellipse
           id="lens1"
-          v-bind:cx="100 - bridgeWidth"
+          v-bind:cx="100 - bridge.width.value"
           v-bind:cy="100"
-          v-bind:rx="valueX"
-          v-bind:ry="valueY"
-          v-bind:stroke-width="strokeWidth"
+          v-bind:rx="lens.width.value"
+          v-bind:ry="lens.height.value"
+          v-bind:stroke-width="stroke.width.value"
           fill="none"
           stroke="black"
         />
         <line
           id="bridge"
-          v-bind:x1="100 - bridgeWidth + valueX"
-          v-bind:x2="200 + bridgeWidth - valueX"
-          v-bind:y1="100"
-          v-bind:y2="100"
-          v-bind:stroke-width="strokeWidth"
+          v-bind:x1="100 - bridge.width.value + lens.width.value - bridge.height.value / π"
+          v-bind:x2="200 + bridge.width.value - lens.width.value + bridge.height.value / π"
+          v-bind:y1="100 - bridge.height.value"
+          v-bind:y2="100 - bridge.height.value"
+          v-bind:stroke-width="stroke.width.value"
           fill="none"
           stroke="black"
         />
         <ellipse
           id="lens2"
-          v-bind:cx="200 + bridgeWidth"
+          v-bind:cx="200 + bridge.width.value"
           v-bind:cy="100"
-          v-bind:rx="valueX"
-          v-bind:ry="valueY"
-          v-bind:stroke-width="strokeWidth"
+          v-bind:rx="lens.width.value"
+          v-bind:ry="lens.height.value"
+          v-bind:stroke-width="stroke.width.value"
           fill="none"
           stroke="black"
         />
       </svg>
     </div>
     <div class="sliders">
-      <vue-slider v-model="valueX"></vue-slider>
+      <vue-slider v-bind="lens.width" v-model="lens.width.value"></vue-slider>
       <br>
       <br>
-      <vue-slider v-model="valueY"></vue-slider>
+      <vue-slider v-bind="lens.height" v-model="lens.height.value"></vue-slider>
       <br>
       <br>
-      <vue-slider v-model="bridgeWidth"></vue-slider>
+      <vue-slider v-bind="bridge.width" v-model="bridge.width.value"></vue-slider>
       <br>
       <br>
-      <vue-slider v-model="strokeWidth"></vue-slider>
+      <vue-slider v-bind="bridge.height" v-model="bridge.height.value"></vue-slider>
+      <br>
+      <br>
+      <vue-slider v-bind="stroke.width" v-model="stroke.width.value"></vue-slider>
     </div>
   </div>
 </template>
@@ -58,11 +61,35 @@ export default {
   },
   data: function() {
 		return {
-      bridgeWidth: 0,
-      strokeWidth: 3,
-			valueX: 30,
-			valueY: 30
-		}
+      π: 3.141592653589793238462643383279502884197169399375105820974944592307816406286,
+      bridge: {
+        width: {
+          max: 64,
+          value: 0
+        },
+        height: {
+          max: 18,
+          value: 0
+        }
+      },
+      stroke: {
+        width: {
+          min: 3,
+          max: 15,
+          value: 3
+        }
+      },
+      lens: {
+        width: {
+          max: 64,
+          value: 32
+        },
+        height: {
+          max: 64,
+          value: 32
+        }
+      }
+    }
 	}
 }
 </script>
