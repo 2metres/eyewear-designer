@@ -41,10 +41,10 @@
       <vue-slider v-model="valueY"></vue-slider>
       <br>
       <br>
-      <vue-slider v-model="strokeWidth"></vue-slider>
-      <br>
-      <br>
       <vue-slider v-model="bridgeWidth"></vue-slider>
+      <br>
+      <br>
+      <vue-slider v-model="strokeWidth"></vue-slider>
     </div>
   </div>
 </template>
