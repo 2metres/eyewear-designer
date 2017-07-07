@@ -67,7 +67,7 @@ export default {
     vueSlider
   },
   data: function() {
-		return {
+    return {
       π: 3.141592653589793238462643383279,
       bridge: {
         width: {
